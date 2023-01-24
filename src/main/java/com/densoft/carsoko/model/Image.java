@@ -6,9 +6,6 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "images")
-public class Image {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+public class Image extends BaseEntity {
     private String path;
 }

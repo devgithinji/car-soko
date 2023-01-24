@@ -6,10 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "car_details")
-public class VehicleDetails {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+public class VehicleDetails extends BaseEntity {
     @Column(name = "year_of_manufacture", length = 20)
     private String yearOfManufacture;
     private String trim;

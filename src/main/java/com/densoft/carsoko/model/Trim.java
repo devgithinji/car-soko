@@ -9,9 +9,6 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "trims")
-public class Trim {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+public class Trim extends BaseEntity {
     private String name;
 }

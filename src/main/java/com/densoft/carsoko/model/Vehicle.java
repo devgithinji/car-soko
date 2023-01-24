@@ -6,11 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "cars")
-public class Vehicle {
-
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+public class Vehicle extends BaseEntity {
     @OneToOne
     private Brand brand;
     @OneToOne

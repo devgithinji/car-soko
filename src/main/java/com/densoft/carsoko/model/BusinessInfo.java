@@ -6,10 +6,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "business_info")
-public class BusinessInfo {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+public class BusinessInfo extends BaseEntity {
+
     @Column(unique = true, length = 500)
     private String businessName;
     @Column(unique = true, length = 500)

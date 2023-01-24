@@ -8,10 +8,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "users")
-public class User {
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+public class User extends BaseEntity {
     private String name;
     @Column(unique = true)
     private String email;
