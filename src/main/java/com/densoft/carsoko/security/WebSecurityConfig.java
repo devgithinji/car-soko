@@ -71,8 +71,8 @@ public class WebSecurityConfig {
                 .exceptionHandling().authenticationEntryPoint(authEntryPoint)
                 .accessDeniedHandler(customAccessDeniedHandler)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll()
-                .and().authorizeHttpRequests().requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .and().authorizeHttpRequests().requestMatchers("/auth/**").permitAll()
+                .and().authorizeHttpRequests().requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
         httpSecurity.authenticationProvider(authenticationProvider());
         httpSecurity.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);

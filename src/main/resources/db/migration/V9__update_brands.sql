@@ -1,0 +1,2 @@
+ALTER TABLE brands
+    ADD logo VARCHAR(255) NULL;
