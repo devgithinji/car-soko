@@ -25,13 +25,14 @@ public class WebSecurityConfig {
     private final UserDetailsImpl userDetails;
 
     private final AuthEntryPoint authEntryPoint;
-
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
     private final PasswordEncoder passwordEncoder;
     private final AuthTokenFilter authTokenFilter;
 
-    public WebSecurityConfig(UserDetailsImpl userDetails, AuthEntryPoint authEntryPoint, PasswordEncoder passwordEncoder, AuthTokenFilter authTokenFilter) {
+    public WebSecurityConfig(UserDetailsImpl userDetails, AuthEntryPoint authEntryPoint, CustomAccessDeniedHandler customAccessDeniedHandler, PasswordEncoder passwordEncoder, AuthTokenFilter authTokenFilter) {
         this.userDetails = userDetails;
         this.authEntryPoint = authEntryPoint;
+        this.customAccessDeniedHandler = customAccessDeniedHandler;
         this.passwordEncoder = passwordEncoder;
         this.authTokenFilter = authTokenFilter;
     }
@@ -68,8 +69,10 @@ public class WebSecurityConfig {
                 .cors().configurationSource(configurationSource())
                 .and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(authEntryPoint)
+                .accessDeniedHandler(customAccessDeniedHandler)
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll()
+                .and().authorizeHttpRequests().requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
         httpSecurity.authenticationProvider(authenticationProvider());
         httpSecurity.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
