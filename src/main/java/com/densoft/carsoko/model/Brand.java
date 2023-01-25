@@ -11,6 +11,7 @@ import java.util.Set;
 public class Brand extends BaseEntity {
 
     private String name;
+    private String logo;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "vehicle_id")
     private Set<Model> models;
