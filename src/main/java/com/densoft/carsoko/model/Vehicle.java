@@ -5,8 +5,9 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "cars")
+@Table(name = "vehicles")
 public class Vehicle extends BaseEntity {
+
     @OneToOne
     private Brand brand;
     @OneToOne
@@ -15,7 +16,6 @@ public class Vehicle extends BaseEntity {
     private Category category;
     private int price;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "car_detail_id")
     private VehicleDetails vehicleDetails;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Image> images;

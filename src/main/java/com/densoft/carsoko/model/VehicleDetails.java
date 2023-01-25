@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "car_details")
+@Table(name = "vehicle_details")
 public class VehicleDetails extends BaseEntity {
     @Column(name = "year_of_manufacture", length = 20)
     private String yearOfManufacture;
